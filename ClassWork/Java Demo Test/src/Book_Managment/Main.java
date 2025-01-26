@@ -26,10 +26,9 @@ public class Main {
             switch (n) {
                 case 0: {
                     System.out.println("\n\t\033[1;35m_/\\_ Thanks for using our services _/\\_\033[0m\n\n");
-                    n=0;
                     break;
                 }
-                case 1:{
+                case 1: {
                     bm.addBook();
                     break;
                 }
@@ -37,8 +36,7 @@ public class Main {
                     bm.displayAllBooks();
                     break;
                 }
-                case 3:
-                {
+                case 3: {
                     int tempId;
                     System.out.println("Enter book id to search");
                     tempId = sc.nextInt();
@@ -51,30 +49,53 @@ public class Main {
                 }
                 case 4: {
                     bm.searchBookByName();
+//                    bm.displayAllBooks(res);
                     break;
                 }
-                case 5:
-                {
+                case 5: {
                     bm.fetchBooksByAuthor();
                     break;
                 }
-                case 6:
-                {
+                case 6: {
                     bm.fetchBooksByCategory();
                     break;
                 }
-                case 7:
-                {
+                case 7: {
                     bm.sortBookByPrice();
                     break;
                 }
-
+                case 8: {
+                    bm.sortBookByRating();
+                    break;
+                }
+                case 9: {
+                    bm.updateBookById();
+                    break;
+                }
+                case 10: {
+                    int tempId;
+                    System.out.println("\t\033[1;36m Available Book Ids\033[0m\n");
+//                    displayAllBooks(brr, bookIndex, 'i');
+                    bm.displayAllBooks();
+                    System.out.println("Enter id of book you want to remove\n");
+//                    scanf("%d", &tempId);
+                    tempId = sc.nextInt();
+//                    fflush(stdin);
+                    int indexOfBook = bm.searchBookById(tempId);
+                    if (indexOfBook == -1)
+                        break;
+                    int res = bm.removeBook(indexOfBook);
+                    if (indexOfBook != -1)
+                        System.out.println("\033[1;32mBook with id-> \033[1;33m" + tempId + "\033[0m \033[1;32mdeleted successfully...!\033[0m\n");
+                    else
+                        System.out.println("\033[1;31mBook not found with such id! Try again with valid book id.\033[0m\n");
+                    break;
+                }
                 default: {
                     System.out.println("Enter Valid Choice");
                 }
             }
         } while (n != 0);
     }
-
 
 }
